@@ -1,5 +1,7 @@
 #include<iostream>
 using namespace std;
+
+
 struct Q_4
 {
     int no_of_days;
@@ -8,16 +10,19 @@ struct Q_4
 Q_4 question_4(int amount,int spent_per_day)
 {
     Q_4 result;
-    int days=0;
-    for(days;days<32 && amount>=spent_per_day;days++)
+    int days=1;
+    int number_of_days=0;
+    for(days;days<31 && amount>=spent_per_day;days+=2)
     {
-        amount-=spent_per_day;
+       amount-=spent_per_day;
+       number_of_days++;
     }
     int remaining_amount;int no_of_days;
     result.remaining_amount=amount;
-    result.no_of_days = days;
+    result.no_of_days = number_of_days;
     return result;
 }
+
 void checkevenorodd(int number)
 {
     if(number>0)
@@ -88,6 +93,8 @@ int main()
     cin>>number;
     checkevenorodd(number);*/
 
+
+    //code to check question 4
     int amount,spent_per_day;
     cout<<"The amount that was given and how much was spend in a day are";
     cin>>amount>>spent_per_day;
