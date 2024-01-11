@@ -1,6 +1,69 @@
 #include<iostream>
 using namespace std;
+#include<cmath>
 
+int chocolateproblem(int amount)
+{
+    int chocolate=0;
+    int wrappers=0;
+    while(amount>0)
+    {
+        chocolate++;
+        amount--;
+        wrappers++;
+        if(wrappers==3)
+        {
+            amount++;
+            wrappers-=3;
+        }
+        else if(wrappers<3 && amount==0)
+        {
+            return chocolate;
+        }
+        else
+        {
+            continue; 
+        } 
+        
+    }
+}
+int cube(int number)
+{
+    return number*number*number;
+}
+bool armstrong(long number)
+{
+    if(number>0)
+    {
+        long original_number = number;
+        long armstrong_number=0;
+        while(number>0)
+        {
+            long last_digit=number%10;
+            armstrong_number+=pow(last_digit,3);
+            number=number/10;
+        }
+        return (int)armstrong_number==(int)original_number;
+      
+    }
+    else
+    {
+        cout<<"enter a valid output"<<endl;
+    }
+}
+
+int reverse(int number)
+{
+    int r=0;//consider r is the reversed number
+    int original_number = number;
+    while(number>0)
+    {
+        int last_digit  = number%10;
+        r = r*10+last_digit;
+        number=number/10;
+    }
+    return r;
+}
 
 struct Q_4
 {
@@ -95,13 +158,39 @@ int main()
 
 
     //code to check question 4
-    int amount,spent_per_day;
+    /*int amount,spent_per_day;
     cout<<"The amount that was given and how much was spend in a day are";
     cin>>amount>>spent_per_day;
     Q_4 result = question_4(amount,spent_per_day); 
     cout<<"Remaining amount: "<<result.remaining_amount<<endl;
-    cout<<"Number of days that amount can be spent in a month: "<<result.no_of_days<<endl;
+    cout<<"Number of days that amount can be spent in a month: "<<result.no_of_days<<endl;*/
 
-    return 0;
+    /*int number;
+    cout<<"number=";
+    cin>>number;
+    int result=reverse(number);
+    cout<<result;*/
+
+
+    /*for(long number=1;number<2000;number++)
+    {
+        bool result=armstrong(number);
+        if(armstrong(number))
+        {
+            cout<<"Its a armstrong number,number="<<number<<endl;
+        }
+        /*else
+        {
+            continue;
+        }
+
+    }*/
+//code for chocolate problem
+   /* int amount;
+    cout<<"amount = ";
+    cin>>amount;
+    int result = chocolateproblem(amount);
+    cout<<"the total chocolate with that amount is "<<result<<endl;
+    return 0;*/
 
 }
