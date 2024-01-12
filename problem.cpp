@@ -2,6 +2,48 @@
 using namespace std;
 #include<cmath>
 
+void bobblesortbig_small(int arr[],int n)
+{
+    for(int i=0;i<n;i++)
+    {
+        for(int j=i+1;j<n;j++)
+        {
+            if(arr[j]>arr[i])
+            {
+                int temp=arr[j];
+                arr[j]=arr[i];
+                arr[i]=temp;
+            }
+        }
+
+    }
+    for(int k=0;k<n;k++)
+    {
+        cout<<arr[k]<<" ";
+    }
+}
+
+void bobblesortsmall_big(int arr[],int n)
+{
+    for(int i=0;i<n;i++)
+    {
+        for(int j=i+1;j<n;j++)
+        {
+            if(arr[j]<arr[i])
+            {
+                int temp=arr[j];
+                arr[j]=arr[i];
+                arr[i]=temp;
+            }
+        }
+
+    }
+    for(int k=0;k<n;k++)
+    {
+        cout<<arr[k]<<" ";
+    }
+}
+
 int chocolateproblem(int amount)
 {
     int chocolate=0;
@@ -191,6 +233,21 @@ int main()
     cin>>amount;
     int result = chocolateproblem(amount);
     cout<<"the total chocolate with that amount is "<<result<<endl;
-    return 0;*/
+    return 0;
+    */
+
+//code for bubble sort algorithms
+int n;
+cout<<"n=";
+cin>>n;
+int arr[n];
+cout<<"arr[n]=";
+for(int i=0;i<n;i++)
+{
+    cin>>arr[i];
+}
+bobblesortbig_small(arr,n);
+cout<<endl;
+bobblesortsmall_big(arr,n);
 
 }
