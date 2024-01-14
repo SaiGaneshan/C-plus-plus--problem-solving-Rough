@@ -15,7 +15,7 @@ double Binerytodecimal(int number)
     }
     double sum=0;
     number = original_number;
-    for(int j=digits-1;j>=0;j--)
+    for(int j=0;j<digits;j++)
     {
         int last_digit_1 = number%10;
         sum+=pow(2,j)*last_digit_1;
@@ -128,7 +128,7 @@ bool armstrong(long number)
             armstrong_number+=pow(last_digit,3);
             number=number/10;
         }
-        return (int)armstrong_number==(int)original_number;
+        return armstrong_number==original_number;
       
     }
     else
@@ -311,7 +311,7 @@ cout<<"the result = "<<result;
 */
 
 //code for sum of two binery number
-long number_1;
+/*long number_1;
 long number_2;
 cout<<"number_1 and number_2 are ";
 cin>>number_1>>number_2;
@@ -321,4 +321,37 @@ long a=Binerytodecimal(number_1);
 long b=Binerytodecimal(number_2);
 long sumo = Binerytodecimal(result);
 printf("number_1 is %ld ,number_2 is %ld and their sum is %ld",a,b,sumo);
+return 0;
+*/
+
+//cout<<"the original number is "<<original<<"the sum is "<<sum<<endl;
+
+#include <iostream>
+
+    // Write C++ code here
+long n=0;
+
+for(int i=1;i<2000;i++)
+{
+    n=i;
+    long sum = 0;
+    long original=n;
+    while(n>0)
+    {
+        int lastdigit = n%10;
+        sum += pow(lastdigit,3);
+        n = n/10;
+    }
+    if(sum==original)
+    {
+        cout<<"its a armstrong number="<<sum<<endl;
+    }
+    else
+    {
+        continue;
+    }
+}
+//cout<<"the original number is "<<original<<"the sum is "<<sum<<endl;
+
+    return 0;
 }
