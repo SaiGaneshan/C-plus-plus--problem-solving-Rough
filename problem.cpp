@@ -2,7 +2,34 @@
 using namespace std;
 #include<cmath>
 #include<stdio.h>
+#include<climits>
 
+int repeatelementatleastindex(int arr[],int n)
+{
+    int count=0;
+    int min_index=INT_MAX;
+
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<n;j++)
+        {
+            if(arr[i]==arr[j])
+            {
+                if(i==j)
+                {
+                    continue;
+                }
+                else
+                {
+                count++;
+                min_index=min(min_index,i);
+                }
+            }
+        }
+    }
+
+return min_index;
+}
 double Binerytodecimal(int number)
 {
     long original_number=number;
@@ -324,34 +351,17 @@ printf("number_1 is %ld ,number_2 is %ld and their sum is %ld",a,b,sumo);
 return 0;
 */
 
-//cout<<"the original number is "<<original<<"the sum is "<<sum<<endl;
-
-#include <iostream>
-
-    // Write C++ code here
-long n=0;
-
-for(int i=1;i<2000;i++)
+int n;
+cout<<"n=";
+cin>>n;
+int arr[n];
+cout<<"arr[n]=";
+for(int i=0;i<n;i++)
 {
-    n=i;
-    long sum = 0;
-    long original=n;
-    while(n>0)
-    {
-        int lastdigit = n%10;
-        sum += pow(lastdigit,3);
-        n = n/10;
-    }
-    if(sum==original)
-    {
-        cout<<"its a armstrong number="<<sum<<endl;
-    }
-    else
-    {
-        continue;
-    }
+    cin>>arr[i];
 }
-//cout<<"the original number is "<<original<<"the sum is "<<sum<<endl;
 
-    return 0;
+int result = repeatelementatleastindex(arr,n);
+cout<<"the result is at index(0 based indexing)"<<result<<endl;
+return 0;
 }
