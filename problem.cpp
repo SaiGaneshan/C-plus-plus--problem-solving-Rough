@@ -4,6 +4,88 @@ using namespace std;
 #include<stdio.h>
 #include<climits>
 
+int longestarithmeticsubarray(int arr[],int n)
+{
+    int count = 2;
+    int subarray=2;
+    int pd = arr[1]-arr[0];
+    
+    for(int j=2;j<n;j++)
+    {
+        if(pd==arr[j]-arr[j-1])
+        {
+            count++;
+        }
+        else
+        {
+            count=2;
+        }
+        subarray = max(subarray,count);
+        pd = arr[j] - arr[j - 1];
+    }
+    //subarray+=1;
+    return subarray;
+}
+
+void sumsubarray(int arr[],int n)
+{
+    int sum=0;
+    for(int i=0;i<n;i++)
+    {
+        for(int j=i;j<n;j++)
+        {  
+        sum+=arr[j];   
+        cout<<"sum  = "<<sum<<endl;
+        }
+    }
+}
+
+int maximumnumberinarray(int arr[],int n)
+{
+    int maximum_number=INT_MIN;
+    for(int i=0;i<n;i++)
+    {
+        if(arr[i]>maximum_number)
+        {
+            maximum_number=max(maximum_number,arr[i]);
+        }
+    }
+    return maximum_number;
+}
+
+void subarraysum(int arr[],int n,int key)//not the best , i didnt understand 
+{
+    int i=0;int j=0;int st=-1;int en=-1;int sum=0;
+    while(j<n && sum+arr[j] <= key)
+    {
+        sum+=arr[j];
+        j++;
+    }
+
+    if(sum == key)
+    {
+        cout<<i+1<<" "<<j<<endl;
+        cout<<st<<" "<<en<<endl;
+        return;
+    }
+    while(j<n)
+    {
+        sum+=arr[j];
+        while(sum>key)
+        {
+            sum-=arr[i];
+            i++;
+        }
+        if(sum==key)
+        {
+            st=i+1;
+            en=j+1;
+        }
+        j++;
+    }
+    cout<<st<<" "<<en<<endl;
+}
+
 int repeatelementatleastindex(int arr[],int n)
 {
     int count=0;
@@ -30,6 +112,7 @@ int repeatelementatleastindex(int arr[],int n)
 
 return min_index;
 }
+
 double Binerytodecimal(int number)
 {
     long original_number=number;
@@ -63,7 +146,7 @@ long decimaltobinary(int number_1)
     return binary;
 }
 
-double BinarySum(long a,long b)
+double BinarySum(long a,long b)//i am getting wrong output, but program is correct
 {
     long c=Binerytodecimal(a);
     long d=Binerytodecimal(b);
@@ -350,8 +433,8 @@ long sumo = Binerytodecimal(result);
 printf("number_1 is %ld ,number_2 is %ld and their sum is %ld",a,b,sumo);
 return 0;
 */
-
-int n;
+//code for repeatelementatleastindex
+/*int n;
 cout<<"n=";
 cin>>n;
 int arr[n];
@@ -363,5 +446,52 @@ for(int i=0;i<n;i++)
 
 int result = repeatelementatleastindex(arr,n);
 cout<<"the result is at index(0 based indexing)"<<result<<endl;
+/*int n,key;
+cout<<"n and key =";
+cin>>n>>key;
+int arr[n];
+for(int i=0;i<n;i++)
+{
+    cin>>arr[i];
+}
+subarraysum(arr,n,key);
+*/
+//code to find maximum number in an array
+
+/*int n;
+cout<<"n=";
+cin>>n;
+int arr[n];
+for(int i=0;i<n;i++)
+{
+    cin>>arr[i];
+}
+int result=maximumnumberinarray(arr,n);
+cout<<result;
+*/
+//Sum of subarray
+/*
+int n;
+cout<<"n=";
+cin>>n;
+int arr[n];
+for(int i=0;i<n;i++)
+{
+    cin>>arr[i];
+}
+sumsubarray(arr,n);
+*/
+int n;
+cout<<"n=";
+cin>>n;
+int arr[n];
+for(int i=0;i<n;i++)
+{
+    cin>>arr[i];
+}
+int result=longestarithmeticsubarray(arr,n);
+cout<<result;
+
+
 return 0;
 }
