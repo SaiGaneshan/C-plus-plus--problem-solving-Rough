@@ -4,6 +4,88 @@ using namespace std;
 #include<stdio.h>
 #include<climits>
 
+void missingpositiveelement(int a[],int n)//I have to improve my time complexity
+{
+    int smallest_no=INT_MAX;
+    for(int i=0;i<n;i++)
+    {
+        if(a[i]<0)
+        {
+            a[i]=INT_MAX;
+        }
+        smallest_no=min(smallest_no,a[i]);
+    }
+    int biggest_no = INT_MIN;
+    for(int i=0;i<n;i++)
+    {
+        if(a[i]==INT_MAX)
+        {
+            a[i]=INT_MIN;
+        }
+        biggest_no=max(biggest_no,a[i]);
+    }
+    int help=smallest_no;
+    int god=0;
+    while(help<biggest_no)
+    {
+        for(int i=0;i<n;i++)
+        {
+            if(help==a[i])
+            {
+                god=1;
+                break;
+            }
+            else{
+                god=0;
+            }
+        }
+
+        if(god==0)
+        {
+            cout<<"the missing numer is "<<help<<endl;
+            return;
+
+        }
+        else{
+            help++;
+        }
+    }
+   
+}
+
+void subarraywithgivensum(int arr[],int n,int key)
+{
+    int sum=0;
+    for(int i=n-1;i>=0;i--)
+    {
+        for(int j=0;j<=i;j++)
+        {
+            sum+=arr[j];
+            if(sum==key)
+            {
+                cout<<"starts at 0"<<endl;
+                cout<<"ends at "<<j<<endl;
+                return;
+            }
+        }
+    }
+}
+
+int RecordBreakingday(int arr[],int n)
+{
+    int count=0;
+    int max_day=0;
+    for(int i=1;i<n-1;i++)
+    {
+        if(arr[i-1]<arr[i] && arr[i]>arr[i+1] && max_day<arr[i])
+        {
+            count++;
+            max_day=max(max_day,arr[i]);
+        }
+    }
+    return count;
+}
+
 int longestarithmeticsubarray(int arr[],int n)
 {
     int count = 2;
@@ -23,7 +105,6 @@ int longestarithmeticsubarray(int arr[],int n)
         subarray = max(subarray,count);
         pd = arr[j] - arr[j - 1];
     }
-    //subarray+=1;
     return subarray;
 }
 
@@ -481,6 +562,8 @@ for(int i=0;i<n;i++)
 }
 sumsubarray(arr,n);
 */
+//code to find longest arithmetic subarrey
+/*
 int n;
 cout<<"n=";
 cin>>n;
@@ -491,7 +574,68 @@ for(int i=0;i<n;i++)
 }
 int result=longestarithmeticsubarray(arr,n);
 cout<<result;
+*/
+//code for recored breaking day 
 
+/*int n;
+cout<<"n=";
+cin>>n;
+int arr[n];
+for(int i=0;i<n;i++)
+{
+    cin>>arr[i];
+}
+int result=RecordBreakingday(arr,n);
+cout<<result;
+*/
 
-return 0;
+/*int n;
+cout<<"n=";
+cin>>n;
+int arr[n];
+int key;
+cout<<"key=";
+cin>>key;
+for(int i=0;i<n;i++)
+{
+    cin>>arr[i];
+}
+subarraywithgivensum(arr,n,key);*/
+//missing positive element in a 1d array 
+
+/*int n;
+cout<<"n=";
+cin>>n;
+int arr[n];
+for(int i=0;i<n;i++)
+{
+    cin>>arr[i];
+}
+missingpositiveelement(arr,n);
+*/
+
+int rows,columns,key;
+cout<<"no of rows and columns and key";
+cin>>rows>>columns>>key;
+int arr[rows][columns];
+for(int i=0;i<rows;i++)
+{
+    for(int j=0;j<columns;j++)
+    {
+        cin>>arr[i][j];
+    }
+}
+
+for(int i=0;i<rows;i++)
+{
+    for(int j=0;j<columns;j++)
+    {
+        if(arr[i][j]==key)
+        {
+            cout<<"it is in row number="<<i<<endl;
+            cout<<"it is in column number"<<j<<endl;
+            return 0;
+        }
+    }
+}
 }
