@@ -4,6 +4,258 @@ using namespace std;
 #include<stdio.h>
 #include<climits>
 
+void program_5()
+{
+    for(int i=1;i<=5;i++)
+    {
+        for(int j=1;j<=i;j++)
+        {
+            cout<<"*";
+        }
+        cout<<"\n";
+    }
+
+    for(int q=4;q>=1;q--)
+    {
+        for(int w=1;w<=q;w++)
+        {
+            cout<<"*";
+        }
+        cout<<"\n";
+    }
+}
+
+void program_11()
+{
+    string month;int days;
+    cout<<"Month name<all in caps>: ";
+    cin>>month;
+    int temp;
+    if (month == "JANUARY")
+    {
+        temp=1;
+    }
+    if (month == "FEBRUARY") 
+    {
+        temp=2;
+    }
+    if (month == "MARCH")
+    {
+        temp=3;
+    }
+    if (month == "APRIL")
+    {
+        temp=4;
+    }
+    if (month == "MAY") 
+    {
+        temp=5;
+    }
+    if (month == "JUNE")
+    {
+        temp=6;
+    }
+    if (month == "JULY")
+    {
+        temp=7;
+    }
+    if (month == "AUGUST")
+    {
+        temp=8;
+    }
+    if (month == "SEPTEMBER")
+    {
+        temp=9;
+    }
+    if (month == "OCTOBER")
+    {
+        temp=10;
+    }
+    if (month == "NOVEMBER")
+    {
+        temp=11;
+    }
+    if (month == "DECEMBER")
+    {
+        temp=12;
+    }
+
+    switch(temp)
+    {
+        case 1:
+        days=31;
+        cout<<"no of days: "<<days;
+        break;
+
+        case 2:
+        days=28;
+        cout<<"no of days: "<<days;
+        break;
+
+        case 3:
+        days=31;
+        cout<<"no of days: "<<days;
+        break;
+
+        case 4:
+        days=31;
+        cout<<"no of days: "<<days;
+        break;
+
+        case 5:
+        days=31;
+        cout<<"no of days: "<<days;
+        break;
+
+        case 6:
+        days=30;
+        cout<<"no of days: "<<days;
+        break;
+
+        case 7:
+        days=31;
+        cout<<"no of days: "<<days;
+        break;
+
+        case 8:
+        days=31;
+        cout<<"no of days: "<<days;
+        break;
+
+        case 9:
+        days=30;
+        cout<<"no of days: "<<days;
+        break;
+
+        case 10:
+        days=31;
+        cout<<"no of days: "<<days;
+        break;
+
+        case 11:
+        days=30;
+        cout<<"no of days: "<<days;
+        break;
+
+        case 12:
+        days=31;
+        cout<<"no of days: "<<days;
+        break;
+
+
+    }
+}
+
+void program_13()
+{
+    for(int i=9;i>=1;i--)
+    {
+        for(int j=i;j>=1;j--)
+        {
+            cout<<i;
+        }
+        cout<<" \n";
+    }
+}
+
+void program_12()
+{
+    int sum;
+    int a,b;
+    cout<<"Enter two numbers: ";
+    cin>>a>>b;
+    sum=a+b;
+    if(sum>=105 && sum<=200)
+    {
+        sum=200;
+    }
+    else
+    {
+        sum=a+b;
+    }
+    cout<<"Result= "<<sum;
+}
+
+void program_1() 
+{
+    int n;float result_D;
+    cout<<"MENU:\n1)Add\n2)Subtract\n3)Multiply\n4)Divide\n5)Modulus"<<endl;
+    cout<<"Enter your choice: ";
+    cin>>n;
+    switch(n)
+    {
+        int a,b,result;
+        case 1:
+        cout<<"Enter your two numbers: ";
+        cin>>a>>b;
+        result=a+b;
+        cout<<"Result: "<<result<<endl;
+        break;
+
+        case 2:
+        cout<<"Enter your two numbers: ";
+        cin>>a>>b;
+        result=a-b;
+        cout<<"Result: "<<result<<endl;
+        break;
+
+        case 3:
+        cout<<"Enter your two numbers: ";
+        cin>>a>>b;
+        result=a*b;
+        cout<<"Result: "<<result<<endl;
+        break;
+
+        case 4:
+        cout<<"Enter your two numbers: ";
+        cin>>a>>b;
+        result_D=static_cast<float>(a)/static_cast<float>(b);
+        cout<<"Result: "<<result_D<<endl;
+        break;
+
+        case 5:
+        cout<<"Enter your two numbers: ";
+        cin>>a>>b;
+        result=a/b;
+        cout<<"Result: "<<result<<endl;
+        break;
+    }
+}
+
+void program_2()
+{
+    int num;
+    cout<<"Enter a number: ";
+    cin>>num;
+    for(int i=100;i<2001;i++)
+    {
+        if(num%8==0 && num%5==0)
+        { 
+            cout<<num<<endl;
+        }
+    }
+}
+
+void program_4()
+{
+    random_device rd;
+    uniform_int_distribution<int>dist(1,9);
+    int Guessed_number=dist(rd);
+    int number;
+    bool flag=false;
+    while(flag!=true)
+    {
+        cout<<"Enter a number: ";
+        cin>>number;
+        if(Guessed_number==number)
+        {
+            cout<<"Well guessed!"<<endl;
+            flag=true;
+        }
+
+    }
+}
+
 void missingpositiveelement(int a[],int n)//I have to improve my time complexity
 {
     int smallest_no=INT_MAX;
@@ -625,17 +877,18 @@ for(int i=0;i<rows;i++)
         cin>>arr[i][j];
     }
 }
-
-for(int i=0;i<rows;i++)
+//code to search for element in 2d arrey
+/*for(int i=0;i<rows;i++)
 {
     for(int j=0;j<columns;j++)
     {
         if(arr[i][j]==key)
         {
-            cout<<"it is in row number="<<i<<endl;
-            cout<<"it is in column number"<<j<<endl;
+            cout<<"it is in row number="<<i+1<<endl;
+            cout<<"it is in column number"<<j+1<<endl;
             return 0;
         }
     }
 }
+*/
 }
