@@ -3,6 +3,132 @@ using namespace std;
 #include<cmath>
 #include<stdio.h>
 #include<climits>
+#include<random>
+#include<cctype>
+#include<string>
+#include<algorithm>
+
+void program_9()
+{
+    string name;
+    cout<<"Enter a string:";
+    getline(cin,name);
+    int length = name.length();
+    int number=0;
+    int letter=0;
+    int symbol=0;
+    for(char ch:name)
+    {
+        if(isdigit(ch))
+        {
+            number++;
+        }
+        if(isalpha(ch))
+        {
+            letter++;
+        }
+        if(ispunct(ch))
+        {
+            symbol++;
+        }
+    }
+    if(length>=6 && length<=16 && number>=1 && letter>=1 && symbol>=1)
+    {
+        cout<<"Valid password!"<<endl;
+    }
+    else
+    {
+        cout<<"Not a Valid Password!"<<endl;
+    }
+}
+
+void program_8()
+{
+    string name;
+    cout<<"Enter a string:";
+    getline(cin,name);
+    int number=0;
+    int letter=0;
+    for(char ch:name)
+    {
+        if(isdigit(ch))
+        {
+            number++;
+        }
+        if(isalpha(ch))
+        {
+            letter++;
+        }
+    }
+    cout<<"Letters "<<letter<<"\nDigits "<<number;
+}
+
+void program_7()
+{
+    int rows,columns;
+    cout<<"Enter no of rows and columns: ";
+    cin>>rows>>columns;
+    int arr[rows][columns];
+    for(int i=0;i<rows;i++)
+    {
+        for(int j=0;j<columns;j++)
+        {
+            cin>>arr[i][j];
+        }
+    }
+    cout<<"[";
+      for(int i=0;i<rows;i++)
+    {
+        cout<<"[";
+        for(int j=0;j<columns;j++)
+        {
+            if(j==columns-1)
+            {
+                cout<<arr[i][j];
+            }
+            else
+            {
+                cout<<arr[i][j]<<",";
+            }
+        }
+        if(i==rows-1)
+        {
+            cout<<"]";
+        }
+        else
+        {
+            cout<<"],"; 
+        }
+    }
+    cout<<"]";
+}
+
+string program_3() 
+{
+    // Write C++ code here
+    string sentence;
+    cout<<"Enter a character to reverse: ";
+    getline(cin,sentence);
+    reverse(sentence.begin(), sentence.end());
+
+    return sentence;
+}
+
+string program_6()
+{
+    string name;
+    string rev_name;
+    cout<<"Give the sentence: ";
+    getline(cin,name);
+    int n=name.length();
+    rev_name.resize(n);
+    for(int i=0;i<n;i++)
+    {
+        
+        rev_name[i]=name[n-1-i];
+    }
+    return rev_name;
+}
 
 void program_5()
 {
@@ -224,14 +350,11 @@ void program_1()
 
 void program_2()
 {
-    int num;
-    cout<<"Enter a number: ";
-    cin>>num;
-    for(int i=100;i<2001;i++)
+    for(int i=1000;i<=2000;i++)
     {
-        if(num%8==0 && num%5==0)
+        if(i%8==0 && i%5==0)
         { 
-            cout<<num<<endl;
+            cout<<i<<endl;
         }
     }
 }
@@ -251,6 +374,14 @@ void program_4()
         {
             cout<<"Well guessed!"<<endl;
             flag=true;
+        }
+        else if(Guessed_number<number)
+        {
+            cout<<"Its too high!"<<endl;
+        }
+        else
+        {
+            cout<<"Its too low!"<<endl;
         }
 
     }
